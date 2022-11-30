@@ -1,0 +1,100 @@
+-- Model 0 d2.txt
+.Solv_vf = 0
+.Surf_SLD = 0.21
+.Water_GMO_ratio = 0
+.background = GMO_background = 0.01091 in [0.01091,0.01091]
+.eccentricity = GMO_eccentricity = 0.4837
+.eccentricity_pd = 0
+.eccentricity_pd_n = 35
+.eccentricity_pd_nsigma = 3
+.phi = 60
+.phi_pd = 0
+.phi_pd_n = 35
+.phi_pd_nsigma = 3
+.scale = GMO_scale = 0.003561
+.sld_solvent = 6.7
+.sld_solvent_M0 = 0
+.sld_solvent_mphi = 0
+.sld_solvent_mtheta = 0
+.theta = 60
+.theta_pd = 0
+.theta_pd_n = 35
+.theta_pd_nsigma = 3
+.up_angle = 0
+.up_frac_f = 0
+.up_frac_i = 0
+.up_phi = 0
+.volume = GMO_volume = 31100
+.volume_pd = 0
+.volume_pd_n = 35
+.volume_pd_nsigma = 3
+.water_SLD = 0
+
+[chisq=0.832(14), nllf=28.6884]
+-- Model 1 d3.txt
+.Solv_vf = 0
+.Surf_SLD = 0.21
+.Water_GMO_ratio = 5
+.background = GMO_H2O_bkg = 0.008928
+.eccentricity = GMO_H2O_eccen = 0.6578
+.eccentricity_pd = 0
+.eccentricity_pd_n = 35
+.eccentricity_pd_nsigma = 3
+.phi = 60
+.phi_pd = 0
+.phi_pd_n = 35
+.phi_pd_nsigma = 3
+.scale = GMO_H2O_scale = 0.006113
+.sld_solvent = 6.7
+.sld_solvent_M0 = 0
+.sld_solvent_mphi = 0
+.sld_solvent_mtheta = 0
+.theta = 60
+.theta_pd = 0
+.theta_pd_n = 35
+.theta_pd_nsigma = 3
+.up_angle = 0
+.up_frac_f = 0
+.up_frac_i = 0
+.up_phi = 0
+.volume = GMO_H2O_volume = 123600
+.volume_pd = 0
+.volume_pd_n = 35
+.volume_pd_nsigma = 3
+.water_SLD = -0.54
+
+[chisq=3.141(14), nllf=108.348]
+-- Model 2 d4.txt
+.Solv_vf = 0
+.Surf_SLD = 0.21
+.Water_GMO_ratio = 5
+.background = GMO_D2O_bkg = 0.0162
+.eccentricity = GMO_H2O_eccen = 0.6578
+.eccentricity_pd = 0
+.eccentricity_pd_n = 35
+.eccentricity_pd_nsigma = 3
+.phi = 60
+.phi_pd = 0
+.phi_pd_n = 35
+.phi_pd_nsigma = 3
+.scale = GMO_D2O_scale = 0.00522
+.sld_solvent = 6.7
+.sld_solvent_M0 = 0
+.sld_solvent_mphi = 0
+.sld_solvent_mtheta = 0
+.theta = 60
+.theta_pd = 0
+.theta_pd_n = 35
+.theta_pd_nsigma = 3
+.up_angle = 0
+.up_frac_f = 0
+.up_frac_i = 0
+.up_phi = 0
+.volume = GMO_H2O_volume = 123600
+.volume_pd = 0
+.volume_pd_n = 35
+.volume_pd_nsigma = 3
+.water_SLD = 6.37
+
+[chisq=1.651(14), nllf=56.9539]
+[overall chisq=1.8834(49), nllf=193.99]
