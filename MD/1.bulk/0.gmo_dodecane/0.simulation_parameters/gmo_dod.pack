@@ -1,0 +1,11 @@
+tolerance 2.0
+output gmo_dod.xyz
+filetype xyz
+structure ../../../0.common_files/gmo.xyz
+  number 25
+  inside box  40. 40. 40. 90. 90. 90. 
+end structure
+structure ../../../0.common_files/dodecane_aa.xyz
+  number 5000
+  inside box  1. 1. 1. 129. 129. 129. 
+end structure
