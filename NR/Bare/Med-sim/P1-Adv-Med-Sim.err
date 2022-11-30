@@ -1,0 +1,207 @@
+-- Model 0 P1_hdod
+.probe
+  .back_absorption = back_absorption P1_hdod = 1
+  .background = P1_hdod Bkg = 6.82121e-06
+  .intensity = P1_hdod I0 = 0.940675
+  .sample_broadening = sample_broadening P1_hdod = 0
+  .theta_offset = theta_offset P1_hdod = 0
+.ratio
+  [0] = ratio 0 = 0.5
+  [1] = ratio 1 = 0.5
+.samples
+  [0]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 2.53758
+        .material
+          .irho = h_dod_1 irho = 0
+          .rho = h_dod_1 rho = -0.462
+        .thickness = h_dod_1 thickness = 0
+      [1]
+        .interface = Adv_h interface = 3.09993
+        .material
+          .base
+            .irho = Adv irho = 0
+            .rho = Adv rho = 0.221035
+          .fraction
+            [0] = Adv_solv = 18.0854
+          .material
+            [0]
+              .irho = h_dod_1 irho = 0
+              .rho = h_dod_1 rho = -0.462
+        .thickness = Adv_h thickness = 13.7259
+      [2]
+        .interface = FeOx_rough = 11.3276
+        .material
+          .irho = FeOx_plus irho = 0
+          .rho = (FeOx rho + FeOx_m) = 5.8081
+        .thickness = FeOx_thick = 32.7654
+      [3]
+        .interface = Fe_rough = 6.0766
+        .material
+          .irho = Fe_plus irho = 0
+          .rho = (Fe rho + (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 12.6279
+        .thickness = Fe_thick = 189.866 in [189.866,189.866]
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 19.4836
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 255.841
+  [1]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 2.53758
+        .material
+          .irho = h_dod_1 irho = 0
+          .rho = h_dod_1 rho = -0.462
+        .thickness = h_dod_1 thickness = 0
+      [1]
+        .interface = Adv_h interface = 3.09993
+        .material
+          .base
+            .irho = Adv irho = 0
+            .rho = Adv rho = 0.221035
+          .fraction
+            [0] = Adv_solv = 18.0854
+          .material
+            [0]
+              .irho = h_dod_1 irho = 0
+              .rho = h_dod_1 rho = -0.462
+        .thickness = Adv_h thickness = 13.7259
+      [2]
+        .interface = FeOx_rough = 11.3276
+        .material
+          .irho = FeOx_minus irho = 0
+          .rho = (FeOx rho - FeOx_m) = 5.60879
+        .thickness = FeOx_thick = 32.7654
+      [3]
+        .interface = Fe_rough = 6.0766
+        .material
+          .irho = Fe_minus irho = 0
+          .rho = (Fe rho - (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 3.12323
+        .thickness = Fe_thick = 189.866 in [189.866,189.866]
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 19.4836
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 255.841
+
+[chisq=1.0882(54), nllf=101.206]
+-- Model 1 P1_ddod
+.probe
+  .back_absorption = back_absorption P1_ddod = 1
+  .background = P1_ddod Bkg = 5.65864e-06
+  .intensity = P1_ddod I0 = 0.950308
+  .sample_broadening = sample_broadening P1_ddod = 0
+  .theta_offset = theta_offset P1_ddod = 0
+.ratio
+  [0] = ratio 0 = 0.5
+  [1] = ratio 1 = 0.5
+.samples
+  [0]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 2.53758
+        .material
+          .irho = d_dod_1 irho = 0
+          .rho = d_dod_1 rho = 6.19871
+        .thickness = d_dod_1 thickness = 0
+      [1]
+        .interface = Adv_h interface = 3.09993
+        .material
+          .base
+            .irho = Adv irho = 0
+            .rho = Adv rho = 0.221035
+          .fraction
+            [0] = Adv_solv = 18.0854
+          .material
+            [0]
+              .irho = d_dod_1 irho = 0
+              .rho = d_dod_1 rho = 6.19871
+        .thickness = Adv_h thickness = 13.7259
+      [2]
+        .interface = FeOx_rough = 11.3276
+        .material
+          .irho = FeOx_plus irho = 0
+          .rho = (FeOx rho + FeOx_m) = 5.8081
+        .thickness = FeOx_thick = 32.7654
+      [3]
+        .interface = Fe_rough = 6.0766
+        .material
+          .irho = Fe_plus irho = 0
+          .rho = (Fe rho + (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 12.6279
+        .thickness = Fe_thick = 189.866 in [189.866,189.866]
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 19.4836
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 255.841
+  [1]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 2.53758
+        .material
+          .irho = d_dod_1 irho = 0
+          .rho = d_dod_1 rho = 6.19871
+        .thickness = d_dod_1 thickness = 0
+      [1]
+        .interface = Adv_h interface = 3.09993
+        .material
+          .base
+            .irho = Adv irho = 0
+            .rho = Adv rho = 0.221035
+          .fraction
+            [0] = Adv_solv = 18.0854
+          .material
+            [0]
+              .irho = d_dod_1 irho = 0
+              .rho = d_dod_1 rho = 6.19871
+        .thickness = Adv_h thickness = 13.7259
+      [2]
+        .interface = FeOx_rough = 11.3276
+        .material
+          .irho = FeOx_minus irho = 0
+          .rho = (FeOx rho - FeOx_m) = 5.60879
+        .thickness = FeOx_thick = 32.7654
+      [3]
+        .interface = Fe_rough = 6.0766
+        .material
+          .irho = Fe_minus irho = 0
+          .rho = (Fe rho - (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 3.12323
+        .thickness = Fe_thick = 189.866 in [189.866,189.866]
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 19.4836
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 255.841
+
+[chisq=1.0668(54), nllf=99.2088]
+[overall chisq=1.0804(27), nllf=200.415]
