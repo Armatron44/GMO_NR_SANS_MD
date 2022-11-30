@@ -1,0 +1,310 @@
+-- Model 0 P1_GMO_ddod_25
+.probe
+  .back_absorption = back_absorption P1_GMO_ddod_25 = 1
+  .background = P1_GMO_ddod_25 Bkg = 4.85012e-06
+  .intensity = P1_GMO_ddod_25 I0 = 0.948349
+  .sample_broadening = sample_broadening P1_GMO_ddod_25 = 0
+  .theta_offset = theta_offset P1_GMO_ddod_25 = 0
+.ratio
+  [0] = ratio 0 = 0.5
+  [1] = ratio 1 = 0.5
+.samples
+  [0]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = d_dod_2 irho = 0
+          .rho = d_dod_2 rho = 6.31917
+        .thickness = d_dod_2 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = d_dod_2 irho = 0
+              .rho = d_dod_2 rho = 6.31917
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_plus irho = 0
+          .rho = (FeOx rho + FeOx_m) = 5.752
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_plus irho = 0
+          .rho = (Fe rho + (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 12.6413
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+  [1]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = d_dod_2 irho = 0
+          .rho = d_dod_2 rho = 6.31917
+        .thickness = d_dod_2 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = d_dod_2 irho = 0
+              .rho = d_dod_2 rho = 6.31917
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_minus irho = 0
+          .rho = (FeOx rho - FeOx_m) = 5.52235
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_minus irho = 0
+          .rho = (Fe rho - (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 3.18671
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+
+[chisq=0.9818(54), nllf=90.8186]
+-- Model 1 P1_GMO_CMdod_25
+.probe
+  .back_absorption = back_absorption P1_GMO_CMdod_25 = 1
+  .background = P1_GMO_CMdod_25 Bkg = 9.20995e-06
+  .intensity = P1_GMO_CMdod_25 I0 = 0.939829
+  .sample_broadening = sample_broadening P1_GMO_CMdod_25 = 0
+  .theta_offset = theta_offset P1_GMO_CMdod_25 = 0
+.ratio
+  [0] = ratio 0 = 0.5
+  [1] = ratio 1 = 0.5
+.samples
+  [0]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = CMdod_25 irho = 0
+          .rho = ((d_dod_2 rho * CMdod_vf) + ((1 - CMdod_vf) * h_dod_1 rho)) = 1.92497
+        .thickness = CMdod_25 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = CMdod_25 irho = 0
+              .rho = ((d_dod_2 rho * CMdod_vf) + ((1 - CMdod_vf) * h_dod_1 rho)) = 1.92497
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_plus irho = 0
+          .rho = (FeOx rho + FeOx_m) = 5.752
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_plus irho = 0
+          .rho = (Fe rho + (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 12.6413
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+  [1]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = CMdod_25 irho = 0
+          .rho = ((d_dod_2 rho * CMdod_vf) + ((1 - CMdod_vf) * h_dod_1 rho)) = 1.92497
+        .thickness = CMdod_25 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = CMdod_25 irho = 0
+              .rho = ((d_dod_2 rho * CMdod_vf) + ((1 - CMdod_vf) * h_dod_1 rho)) = 1.92497
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_minus irho = 0
+          .rho = (FeOx rho - FeOx_m) = 5.52235
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_minus irho = 0
+          .rho = (Fe rho - (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 3.18671
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+
+[chisq=0.8127(54), nllf=75.5829]
+-- Model 2 P1_GMO_hdod_25
+.probe
+  .back_absorption = back_absorption P1_GMO_hdod_25 = 1
+  .background = P1_GMO_hdod_25 Bkg = 6.06175e-06
+  .intensity = P1_GMO_hdod_25 I0 = 0.947033
+  .sample_broadening = sample_broadening P1_GMO_hdod_25 = 0
+  .theta_offset = theta_offset P1_GMO_hdod_25 = 0
+.ratio
+  [0] = ratio 0 = 0.5
+  [1] = ratio 1 = 0.5
+.samples
+  [0]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = h_dod_1 irho = 0
+          .rho = h_dod_1 rho = -0.462
+        .thickness = h_dod_1 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = h_dod_1 irho = 0
+              .rho = h_dod_1 rho = -0.462
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_plus irho = 0
+          .rho = (FeOx rho + FeOx_m) = 5.752
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_plus irho = 0
+          .rho = (Fe rho + (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 12.6413
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+  [1]
+    .layers
+      [0]
+        .interface = h_dod_1 interface = 5.97779
+        .material
+          .irho = h_dod_1 irho = 0
+          .rho = h_dod_1 rho = -0.462
+        .thickness = h_dod_1 thickness = 0
+      [1]
+        .interface = GMO_h_25 interface = 4.79628
+        .material
+          .base
+            .irho = GMO_25 irho = 0
+            .rho = GMO_25 rho = 0.21
+          .fraction
+            [0] = GMO_solv_25 = 8.57593
+          .material
+            [0]
+              .irho = h_dod_1 irho = 0
+              .rho = h_dod_1 rho = -0.462
+        .thickness = GMO_h_25 thickness = 19.3851
+      [2]
+        .interface = FeOx_rough = 11.9214
+        .material
+          .irho = FeOx_minus irho = 0
+          .rho = (FeOx rho - FeOx_m) = 5.52235
+        .thickness = FeOx_thick = 34.5099
+      [3]
+        .interface = Fe_rough = 4.0841
+        .material
+          .irho = Fe_minus irho = 0
+          .rho = (Fe rho - (((((Fe rho * 1e-06) / 9.45e-05) * 2.699e-05) * Fe_magmom) * 1000000.0)) = 3.18671
+        .thickness = Fe_thick = 189.727
+      [4]
+        .interface = SiOx interface = 3
+        .material
+          .irho = SiOx irho = 0
+          .rho = SiOx rho = 3.47
+        .thickness = SiOx thickness = 18.3189
+      [5]
+        .interface = Si interface = 0
+        .material
+          .density = Si density = 2.33
+        .thickness = Si thickness = 0
+    .thickness = stack thickness = 261.941
+
+[chisq=1.0517(54), nllf=97.8042]
+[overall chisq=0.9504(18), nllf=264.206]
