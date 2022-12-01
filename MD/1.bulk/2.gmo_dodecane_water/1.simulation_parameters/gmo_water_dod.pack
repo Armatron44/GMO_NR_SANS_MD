@@ -1,0 +1,15 @@
+tolerance 2.0
+output gmo_water_dod.xyz
+filetype xyz
+structure ../../../0.common_files/gmo.xyz
+  number 30
+  inside box  30. 30. 30. 70. 70. 70. 
+end structure
+structure ../../../0.common_files/water.xyz
+  number 150
+  inside box  30. 30. 30. 70. 70. 70. 
+end structure
+structure ../../../0.common_files/dodecane_aa.xyz
+  number 1400
+  inside box  1. 1. 1. 100. 100. 100. 
+end structure

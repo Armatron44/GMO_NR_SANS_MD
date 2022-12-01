@@ -1,0 +1,106 @@
+##################################################################################
+#                                  PARAMETERS                                    #
+##################################################################################
+
+units           real
+dimension       3
+boundary        p p p
+atom_style      full
+neighbor        2.0 bin
+neigh_modify    delay 0 every 1 check yes page 10000000 one 1000000
+pair_style      lj/cut/coul/long 12
+bond_style      harmonic
+angle_style     harmonic
+dihedral_style  opls
+kspace_style    pppm    0.0001
+pair_modify     mix geometric tail yes
+special_bonds   lj/coul 0.0 0.0 0.5
+read_data       data.gmo_water
+#read_restart   restart.npt.300ns
+
+##################################################################################
+#                                   NVE EQUILIBRATION                            #
+##################################################################################
+
+timestep       0.1
+fix            1 all nve
+velocity        all create 298.15 126469147 mom yes rot yes dist gaussian
+thermo_style    custom step temp pe ke epair emol evdwl ecoul elong etotal press lx vol density
+thermo         100
+dump           1 all custom 10000 dump.nve.lammpstrj id type x y z vx vy vz
+dump_modify    1 sort id
+log            log.nve
+restart         100000 restart.temp1 restart.temp2
+
+run            1000000
+
+write_restart   restart.nve
+write_data      bulk.nve.data
+undump         1
+unfix          1
+
+
+
+##################################################################################
+#                                   NVT EQUILIBRATION                            #
+##################################################################################
+
+reset_timestep  0
+timestep        0.5
+fix             2 all nvt temp 298.15 298.15 100
+thermo          100
+thermo_style    custom step temp pe ke epair emol evdwl ecoul elong etotal press lx vol density
+dump            2 all custom 10000 dump.nvt.lammpstrj id type x y z vx vy vz
+dump_modify     2 sort id
+log             log.nvt
+restart         100000 restart.temp1 restart.temp2
+
+run             2000000
+
+write_restart   restart.nvt
+write_data      bulk.nvt.data
+undump          2
+unfix           2
+
+# RDF calculation rerun
+#comm_modify mode single cutoff 110.0 vel no
+#compute 10 all rdf 1000 14 15 14 16 14 17 cutoff 100 
+#fix 11 all ave/time 5 400 2000 c_10[*] file rdf.out mode vector
+
+
+# bulk viscosity einstein
+# Define distinct components of symmetric traceless stress tensor
+
+##################################################################################
+#                             VARIABLE CALCULATION                               #
+##################################################################################
+
+# variable         pxy equal pxy
+# variable         pxx equal pxx #-press
+# variable         pyy equal pyy #-press
+# variable         pzz equal pzz #-press
+# variable         pyz equal pyz
+# variable         pxz equal pxz
+
+# fix              avstress all ave/time 5 400 2000 v_pxy v_pxx v_pyz v_pyy v_pxz v_pzz ave running &
+                 # file profile.einstein.2d
+
+
+##################################################################################
+#                                   NPT PRODUCTION                               #
+##################################################################################
+
+reset_timestep  0
+timestep        1.0
+fix             3 all npt temp 298.15 298.15 5 iso 1 1 25
+thermo          100
+thermo_style    custom step temp pe ke etotal vol press vol density pxy pxx pyz pyy pxz pzz
+dump            3 all custom 10000 dump.npt.lammpstrj id type x y z vx vy vz
+dump_modify     3 sort id
+log             log.npt
+restart         100000 restart.temp1 restart.temp2
+
+run             20000000
+
+write_restart   restart.npt.20ns
+write_data      bulk.npt_20ns.data
