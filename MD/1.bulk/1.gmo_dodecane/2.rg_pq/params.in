@@ -1,0 +1,21 @@
+# Be careful of ammount of spaces (min col 12), propc version 2.2
+../dump.trimmed.lammpstrj
+
+t           Calculate Rg?
+f           Calc. Rg of individual molecules? (f=Rg of all atoms together)
+f           Calculate Ree?
+t           Calculate P(q)?
+f           Calculate Individual P(q)?
+f           Write output trajectory?
+8           Number Columns
+1001        StepMax
+0           IgnoreFirstSteps
+18          NMol
+65          MolSize
+7           MolStartType
+0           ReeFirstAtom (0 == ReeFirstAtom = 1)
+0           ReeLastAtom (0 == ReeLastAtom = MolSize)
+100          StepOutput
+-3.0        p(q)_exp_low
+1.0         p(q)_exp_high
+200         p(q)_num_points
