@@ -1,0 +1,11 @@
+tolerance 2.0
+output 1010_gmo_5050_water.xyz
+filetype xyz
+structure 1010_gmo.xyz
+  number 1
+  fixed 0. 0. 0. 0. 0. 0. 
+end structure
+structure ../../../0.common_files/water.xyz
+  number 5050
+  inside box  1. 1. 1. 379. 379. 379. 
+end structure
