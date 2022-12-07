@@ -1,0 +1,19 @@
+output:
+  filename: data.surface_gmo_water_dod
+  boxsize:
+    xlo: 0.0
+    xhi: 55.088
+    ylo: 0.0
+    yhi: 50.38
+    zlo: -20.0
+    zhi: 170.0
+inputs:
+  ../../../../0.common_files/Fe2O3_50_down.lammps:
+    minormax: max
+    value: -1.5
+  ../../../../0.common_files/Fe2O3_50_up.lammps:
+    minormax: min
+    value: 150.0
+  data.bulk_gmo_water_dod:
+    minormax: min
+    value: 1.5
