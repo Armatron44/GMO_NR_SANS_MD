@@ -112,10 +112,6 @@ def calc_errors_refl1d(problem, points, origp):
     indexlist = []
     for i in problem.labels():
         indexlist.append(origp_keys.index(i))
-    #print(indexlist)
-    #indexlist = [15, 16, 17, 18, 3, 19, 20, 7, 8, 9, 10, 11, 35, 36, 37, 38] #special case for P1-GMO-25 dd fit.
-    #indexlist = [21, 22, 17, 3, 19, 20, 7, 8, 9, 10, 11, 18, 35, 36, 37, 38] #special case for P1-GMO-25 CMd fit.
-    #indexlist = [23, 24, 17, 3, 19, 20, 7, 8, 9, 10, 11, 35, 36, 37, 38] #special case for P1-GMO-25 hd fit.
     for p in points:
         parr = p[indexlist]
         problem.setp(parr)
@@ -178,6 +174,10 @@ if 1:  # Loading errors is expensive; may not want to do so all the time.
     profiles, slabs, Q, residuals, RQ = calc_errors_from_state(experiment[0], state, origp, nshown=300) #profiles is a dictionary of length n, where n is the number of models in the multifitprob.
 
 items = list(profiles) #to access the data within each model, convert the profiles to a list to list the items. this creates a dict_keys object.
+
+#check SLD profiles (note they are the wrong way around)
+show_profiles((profiles,slabs,Q,residuals), align=0, contours=[], npoints=50)
+plt.show()
 
 ## get posterior bands for SLD ##
 
