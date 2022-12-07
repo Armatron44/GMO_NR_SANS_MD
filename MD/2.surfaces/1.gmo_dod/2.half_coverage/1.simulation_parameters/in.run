@@ -1,0 +1,162 @@
+##################################################################################
+#                              ENVIRONMENTAL VARIABLES                           #
+##################################################################################
+
+variable        TEMPERATURE equal 298.15 # Temperature in K
+
+##################################################################################
+#                                  PARAMETERS                                    #
+##################################################################################
+
+units           real
+atom_style      full
+boundary        p p f
+
+pair_style  lj/cut/coul/long 12
+pair_modify mix geometric tail yes
+bond_style  harmonic
+angle_style harmonic
+dihedral_style  opls
+kspace_style    pppm    0.0001
+kspace_modify   slab    3.0
+special_bonds lj/coul 0.0 0.0 0.5
+
+
+##################################################################################
+#                        DATA FILE & DIHEDRAL COEFFICIENTS                       #
+##################################################################################
+
+read_data    data.bulk_gmo_dod
+neighbor        2.0 bin
+neigh_modify    delay 0 every 1 check yes #no
+
+##################################################################################
+#                                 ASSIGN GROUPS                                  #
+##################################################################################
+
+group fluid     id  >= 4801
+
+group fes   type 1 3
+group os    type 2 4
+
+group us        id     <>   1    2400
+group ls        id     <>  2401    4800
+
+group fe_ls     intersect fes ls
+group o_ls      intersect os ls
+
+group fe_us     intersect fes us
+group o_us      intersect os us
+
+group fe_us_f   id      <>   1  160
+group o_us_f    id      <>   961 1280
+group fe_ls_f   id      <>   2401 2560
+group o_ls_f    id      <>   3361 3680
+
+group bottomsurface union o_ls fe_ls
+group topsurface    union o_us fe_us
+
+group bottomfixed union o_ls_f fe_ls_f
+group topfixed  union o_us_f fe_us_f
+
+group fixed union topfixed bottomfixed
+group unfixed subtract all topfixed bottomfixed 
+
+
+##################################################################################
+#                             NVE/MINIMIZE FOR STABILISATION                     #
+##################################################################################
+timestep 0.1
+
+velocity       all create ${TEMPERATURE} 126469147 mom yes rot yes dist gaussian 
+thermo_style custom step temp etotal press lx ly lz vol
+thermo 1000
+thermo_modify flush yes
+fix 1 all nve
+log   log.nve
+dump 40 all custom 3000 dump.nve.lammpstrj id type x y z vx vy vz fz fy fz
+minimize 1.0e-4 1.0e-6 1000 10000
+run 250000
+
+write_restart   restart.nve
+
+unfix 1
+undump 40
+##################################################################################
+#                                 NVT FLUID PREPARATION                          #
+##################################################################################  
+
+fix            4 fixed nve
+ 
+##################################################################################
+#                                 NVT FLUID MAIN                                 #
+##################################################################################
+
+fix     1 unfixed nvt temp 298.15 298.15 5
+thermo_style custom step temp  etotal press  lx ly 
+thermo 1000
+thermo_modify flush yes
+timestep        0.1
+dump            1 all custom 10000 dump.nvt.lammpstrj id type x y z vx vy vz
+log             log.nvt
+restart         100000 restart.temp1 restart.temp2
+run             500000
+
+undump 1
+
+
+write_restart   restart.nvt
+
+##################################################################################
+#                         FLUID TEMPERATURE & PRESSURE CALCULATION               #
+##################################################################################
+
+compute                 fltemp fluid temp
+compute                 fltemp_nrml fluid temp/partial 0 1 0
+
+compute                 peratom fluid stress/atom NULL
+compute                 p all reduce sum c_peratom[1] c_peratom[2] c_peratom[3]
+variable                feus equal z[960]
+variable                fels equal z[3360]
+variable                diff equal "v_feus - v_fels"
+variable                pr equal -(c_p[1]+c_p[2]+c_p[3])/(3*(lx*ly*v_diff))
+
+
+##################################################################################
+#                              PRESSURE APPLICATION  ~ 1  atm                    #
+##################################################################################
+
+fix  10 o_us_f aveforce  NULL NULL   -0.00004546
+fix  11 fe_us_f aveforce NULL NULL   -0.00015865
+
+velocity bottomsurface    set 0 0 0 sum no units box
+velocity topsurface  set 0 0 0 sum no units box
+fix  12  bottomfixed  setforce   0.0   0.0   0.0
+
+##################################################################################
+#                                   RESTART & LOG FILES                          #
+##################################################################################
+thermo_style custom step temp c_fltemp c_fltemp_nrml epair emol evdwl ecoul elong etotal press v_pr lx ly v_diff
+thermo          1000
+thermo_modify flush yes
+timestep        0.6
+dump            1 all custom 20000 gmo_npt_1.lammpstrj id type x y z vx vy vz
+dump_modify     1 sort id
+log             log.gmo_npt_1
+restart         1000000 restart.temp1 restart.temp2
+run             5000000
+
+undump 1
+
+write_restart   restart.npt_equi
+
+timestep 1.0
+
+dump            1 all custom 20000 gmo_npt_2.lammpstrj id type x y z vx vy vz
+dump_modify     1 sort id
+log             log.gmo_npt_2
+restart         1000000 restart.temp1 restart.temp2
+run             10000000
+
+write_restart restart.npt
+write_data data.gmo.out

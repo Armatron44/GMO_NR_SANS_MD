@@ -1,0 +1,7 @@
+tolerance 2.0
+output 1010_gmo.xyz
+filetype xyz
+structure ../../../0.common_files/gmo.xyz
+  number 1010
+  inside box  1. 1. 1. 379. 379. 379. 
+end structure
