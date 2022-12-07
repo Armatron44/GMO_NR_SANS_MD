@@ -1,0 +1,9 @@
+tolerance 2.0
+output gmo_2.xyz
+filetype xyz
+nloop 1000
+
+structure ../../../../0.common_files/gmo.xyz
+  number 39
+  inside box 1. 1. 50. 54. 49. 84.
+end structure

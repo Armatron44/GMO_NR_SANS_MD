@@ -1,0 +1,24 @@
+tolerance 2.0
+output gmo_dod.xyz
+filetype xyz
+
+structure gmo_1.xyz
+  number 1
+  center
+  fixed 27.5 25. 17.0 0. 0. 0.
+oend structure
+
+structure gmo_2.xyz
+  number 1
+  center
+  fixed 27.5 25. 137.0 0. 0. 0.
+end structure
+
+structure ../../../../0.common_files/dodecane_aa.xyz
+  number 589
+  inside box 1. 1. 1. 54. 49. 149.
+end structure
+
+
+
+
