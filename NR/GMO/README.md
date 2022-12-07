@@ -3,6 +3,7 @@
 ## Required software
 * [python 3] (https://www.python.org/downloads/)
 * [Refl1d] (https://refl1d.readthedocs.io/en/latest/)
+* [Pandas] (https://pandas.pydata.org/)
 * [bumps] (https://bumps.readthedocs.io/en/latest/)
 * [refnx] (https://refnx.readthedocs.io/en/latest/)
 * [dynesty] (https://dynesty.readthedocs.io/en/stable/)
