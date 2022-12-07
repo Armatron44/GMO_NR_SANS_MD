@@ -1,10 +1,21 @@
-## Scripts to analyse the NR data collected with dodecane solutions containing GMO.
+# Scripts to analyse the NR data collected with dodecane solutions containing GMO.
 
-python modules requirements to completely recreate:<br>
-refl1d, bumps, refnx, dynesty, jupyter, uravu
+## Required software
+* [python 3] (https://www.python.org/downloads/)
+* [Refl1d] (https://refl1d.readthedocs.io/en/latest/)
+* [bumps] (https://bumps.readthedocs.io/en/latest/)
+* [refnx] (https://refnx.readthedocs.io/en/latest/)
+* [dynesty] (https://dynesty.readthedocs.io/en/stable/)
+* [jupyter] (https://jupyter-notebook.readthedocs.io/en/stable/)
+* [uravu] (https://uravu.readthedocs.io/en/latest/)
+* [arviz] (https://www.arviz.org/en/latest/)
+
+## Nested sampling
 
 The three nested sampling scripts (for models 1, 2 & 3) are within the M1_NS, M2_NS and M3_NS directories.
 These three scripts use MixedMagSlabs2.py<br>
+
+## MCMC fit of Model 1
 
 The (refl1d-DREAM) fit of model 1 was conducted with P1-GMO.py <br>
 
@@ -19,4 +30,4 @@ P1-GMO-median_sim.py was used to generate the median reflectivity and SLD profil
 This was done with the following command: <br>
 $ refl1d --simulate --noise=0.00000001 --store=mediansim
 
-The notebook SLDfix - refl1d within the mediansim directory was used to correct the distances across the profile.
+The notebook 'SLDfix - refl1d' within the mediansim directory was used to correct the distances across the profile.
