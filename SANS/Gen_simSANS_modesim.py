@@ -1,7 +1,6 @@
 import sys
 import os.path
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 from bumps.fitproblem import load_problem
 from bumps.cli import load_best
