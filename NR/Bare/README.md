@@ -17,7 +17,7 @@ The nested sampling scripts for modelling the interface with and without the adv
 are found within the "Adv_at_interface_NS" and the "bare interface_NS" folders.
 These three scripts use MixedMagSlabs2.py<br>
 
-## MCMC fit of Model 1
+## MCMC fit of Adv_at_interface
 
 The (refl1d-DREAM) fit of the "Adv_at_interface" was conducted with P1-adv.py <br>
 
@@ -35,3 +35,6 @@ P1-Adv-Med-Sim.py was used to generate the median reflectivity and SLD profiles 
 These profiles are stored in the Med-sim directory.
 This was done with the following command: <br>
 $ refl1d --simulate --noise=0.00000001 --store=Med-sim P1-Adv-Med-Sim.py
+
+The median SLD profiles for the up spin states are output by refl1d with the prefix -x-0-profile.dat, where x is either 1 or 2 for the ddod or hdod solvent contrasts.
+The notebook 'SLDfix - refl1d' within the mediansim directory of the GMO folder was used to correct the distances across these SLD profiles, which output the correct median SLD profiles in a txt file with the prefix of -corrected.txt
