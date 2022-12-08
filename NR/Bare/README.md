@@ -27,9 +27,9 @@ $ refl1d Load_posterior_bands.py P1-adv.py Fit_store<br>
 These bands have been saved out in ddod_SLD++.csv, hdod_SLD++.csv, ddod_RQ.csv and hdod_RQ.csv.
 
 The Load_data.py script in the Fit_store directory can be used to generate a description of the posterior for each parameter,<br>
-using the following commands
-$ cd your_directory/GMO_NR_SANS_MD/NR/Bare/Fit_store
-$ refl1d Load_data.py -p
+using the following commands:
+$ cd your_directory/GMO_NR_SANS_MD/NR/Bare/Fit_store <br>
+$ refl1d Load_data.py -p <br>
 
 P1-Adv-Med-Sim.py was used to generate the median reflectivity and SLD profiles for the two solvent contrasts.
 These profiles are stored in the Med-sim directory.
