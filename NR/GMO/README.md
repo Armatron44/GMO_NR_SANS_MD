@@ -23,7 +23,7 @@ The (refl1d-DREAM) fit of model 1 was conducted with P1-GMO.py <br>
 The Load_posterior_bands.py script can be used to save out the reflectivity and SLD traces of the sampled posterior.<br>
 This can be done within your refl1d conda environment from the GMO directory with the following command:<br>
 $ refl1d Load_posterior_bands.py P1-GMO.py Fit_store<br>
-An example of these bands is given in "ddod\_RQ\_300point.csv" & "ddod_SLD++\_300point.csv"_.<br>
+An example of these bands is given in "ddod\_RQ\_300point.csv" & "ddod_SLD++\_300point.csv".<br>
 
 The notebook "P1_test_variables_for_gauss_and_corner" found in Fit_store directory can be used to generate a description of the posterior for each parameter.<br>
 
