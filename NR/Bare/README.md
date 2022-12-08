@@ -1,4 +1,4 @@
-# Scripts to analyse the NR data collected with dodecane solutions containing GMO.
+# Scripts to analyse the NR data collected with neat dodecane solutions.
 
 ## Required software
 * [python 3] (https://www.python.org/downloads/)
@@ -19,17 +19,19 @@ These three scripts use MixedMagSlabs2.py<br>
 
 ## MCMC fit of Model 1
 
-The (refl1d-DREAM) fit of model 1 was conducted with P1-GMO.py <br>
+The (refl1d-DREAM) fit of the "Adv_at_interface" was conducted with P1-adv.py <br>
 
 The Load_posterior_bands.py script can be used to save out the reflectivity and SLD traces of the sampled posterior.<br>
-This can be done within your refl1d conda environment from the GMO directory with the following command:<br>
-$ refl1d Load_posterior_bands.py P1-GMO.py Fit_store<br>
-An example of these bands is given in "ddod_RQ_300point.csv" & "ddod_SLD++_300point.csv"_.<br>
+This can be done within your refl1d conda environment from the bare directory with the following command:<br>
+$ refl1d Load_posterior_bands.py P1-adv.py Fit_store<br>
+These bands have been saved out in ddod_SLD++.csv, hdod_SLD++.csv, ddod_RQ.csv and hdod_RQ.csv.
 
-The notebook "P1_test_variables_for_gauss_and_corner" found in Fit_store directory can be used to generate a description of the posterior for each parameter.<br>
+The Load_data.py script in the Fit_store directory can be used to generate a description of the posterior for each parameter,<br>
+using the following commands
+$ cd your_directory/GMO_NR_SANS_MD/NR/Bare/Fit_store
+$ refl1d Load_data.py -p
 
-P1-GMO-median_sim.py was used to generate the median reflectivity and SLD profiles for the three solvent contrasts (these are found in the mediansim directory).
+P1-Adv-Med-Sim.py was used to generate the median reflectivity and SLD profiles for the two solvent contrasts.
+These profiles are stored in the Med-sim directory.
 This was done with the following command: <br>
-$ refl1d --simulate --noise=0.00000001 --store=mediansim
-
-The notebook 'SLDfix - refl1d' within the mediansim directory was used to correct the distances across the profile.
+$ refl1d --simulate --noise=0.00000001 --store=Med-sim P1-Adv-Med-Sim.py
