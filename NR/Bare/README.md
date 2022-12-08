@@ -27,7 +27,7 @@ $ refl1d Load_posterior_bands.py P1-adv.py Fit_store<br>
 These bands have been saved out in ddod_SLD++.csv, hdod_SLD++.csv, ddod_RQ.csv and hdod_RQ.csv.
 
 The Load_data.py script in the Fit_store directory can be used to generate a description of the posterior for each parameter,<br>
-using the following commands:
+using the following commands: <br>
 $ cd your_directory/GMO_NR_SANS_MD/NR/Bare/Fit_store <br>
 $ refl1d Load_data.py -p <br>
 
