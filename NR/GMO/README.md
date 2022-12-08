@@ -31,7 +31,5 @@ P1-GMO-median_sim.py was used to generate the median reflectivity and SLD profil
 This was done with the following command: <br>
 $ refl1d --simulate --noise=0.00000001 --store=mediansim P1-GMO-median_sim.py
 
-The median SLD profiles for the up spin states are output by refl1d with the prefix -x-0-profile.dat,
-<br> where x is either 1, 2 or 3 for the ddod, CMdod and hdod solvent contrasts.
-The notebook 'SLDfix - refl1d' within the mediansim directory was used to correct the distances across these SLD profiles,<br>
-and outputs the correct median SLD profiles in a txt file with the prefix of -corrected.txt
+The median SLD profiles for the up spin states are output by refl1d with the prefix -x-0-profile.dat, where x is either 1, 2 or 3 for the ddod, CMdod and hdod solvent contrasts.
+The notebook 'SLDfix - refl1d' within the mediansim directory was used to correct the distances across these SLD profiles, and outputs the correct median SLD profiles in a txt file with the prefix of -corrected.txt
