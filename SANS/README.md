@@ -2,27 +2,23 @@
 
 ## Required software
 * [python 3] (https://www.python.org/downloads/)
-* [Pandas] (https://pandas.pydata.org/)
 * [bumps] (https://bumps.readthedocs.io/en/latest/)
 * [Refl1d] (https://refl1d.readthedocs.io/en/latest/)
 * [corner] (https://corner.readthedocs.io/en/latest/)
+* [jupyter] (https://jupyter-notebook.readthedocs.io/en/stable/)
 * [uravu] (https://uravu.readthedocs.io/en/latest/)
 * [arviz] (https://www.arviz.org/en/latest/)
 * [sasview] (https://github.com/SasView/sasview) - using the git download and not the sasview.exe
 
-## Splicing workflow
+## Fitting data
 
-The notebook "MD\_NR\_Splice\_SLD" can be used to splice the SLD profile generated from the MD analysis (gmo\_1\_water\_0\_sld.csv) onto the SLD profile of the underlying substrate.
-The spliced SLD profiles are then microsliced to create NR profiles which are compared to the original NR data.
+The data were fit using bumps and the Fit_all_contrasts.py script - the output is stored in the Fit_store directory.
+This uses ellip_GMO_water_solv.py script, which is a re-parameterisation of the ellipsoid model from sasview.
+With the conda prompt in the Fit_store directory, use <br> 
+$ bumps -p Generate-plots.py<br>
+to load the chain, generate the parameter statistics & generate the corner plots.
 
-## Convolution workflow
+To generate the median and mode simulated scattered intensity use <br> 
+$ bumps Gen_simSANS_modesim.py Fit_all_contrasts_modesim.py Fit_store_modesim <br>
 
-The notebook "MD\_NR\_convolve" loads the SLD profile generated from the MD analysis (gmo\_1\_water\_0\_sld.csv).
-The MD SLD profiles are convolved with underlying substrate volume fraction profile, which is generated from the median parameter values from the refl1d fit (see files in NR/GMO/Fit_store).
-These convolved SLD profiles are then added to the SLD profile of the underlying substrate. 
-The complete SLD profiles are then microsliced to create NR profiles which are compared to the original NR data.
-
-
-With the conda prompt in the Fit_store directory, use $ bumps -p Generate-plots.py to load the chain, generate the parameter statistics & generate the corner plots.
-
-To generate the median and mode simulated scattered intensity use $ bumps Gen_simSANS_modesim.py Fit_all_contrasts_modesim.py Fit_store_modesim.
+The notebook "Compare\_fit\_to\_data" is used to compare the data to the median and mode of the posteriors.
