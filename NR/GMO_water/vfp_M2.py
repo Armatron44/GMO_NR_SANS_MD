@@ -206,8 +206,8 @@ class VFP(Component):
                         (1-cls.get_erf(2, loc, rough, thick))*(1-cls.get_erf(3, loc, rough, thick))*(1-cls.get_erf(4, loc, rough, thick))*cls.get_erf(5, loc, rough, thick), #GMOt
                         (1-cls.get_erf(2, loc, rough, thick))*(1-cls.get_erf(3, loc, rough, thick))*(1-cls.get_erf(4, loc, rough, thick))*(1-cls.get_erf(5, loc, rough, thick))]) #Solv
         
-        #There may be portions of a layer's vf profile that sits above 1 for an extended length.
-        #Therefore, we should merge these microslabs into one.
+        #There may be portions of a layer's vf profile that sits above 0 (at say 1) for an extended length.
+        #Therefore, we can merge these microslabs into one to speed up calculations.
         cls.ind = np.nonzero((np.abs(np.diff(vfs[2])) < 1e-5) & (vfs[2][:-1] > 0.5)) #look for insignificant differences in Fe vf, when vf is > 0.5.
         reduced_vfs = np.delete(vfs, cls.ind, 1)
         return reduced_vfs, cls.ind
