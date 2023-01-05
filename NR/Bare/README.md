@@ -31,6 +31,8 @@ using the following commands: <br>
 $ cd your_directory/GMO_NR_SANS_MD/NR/Bare/Fit_store <br>
 $ refl1d Load_data.py -p <br>
 
+In addition, the notebook 'Bare_test_variables_for_gauss_and_corner' can be used to check the number of independent samples.
+
 P1-Adv-Med-Sim.py was used to generate the median reflectivity and SLD profiles for the two solvent contrasts.
 These profiles are stored in the Med-sim directory.
 This was done with the following command: <br>

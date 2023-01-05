@@ -43,21 +43,102 @@ class LogpExtra(object):
             return 0
         return -1E15
         
+#method 2 - use refnx's (emcee's) autocorrelation time function + custom rhat function.
+
+def gelman_rhat(sequences, portion=0.5):
+    """
+    A modification of bumps.dream.gelman function (which only uses last portion of each chain), 
+    to match that proposed in Gelman et al (Bayesian data analysis) 2013 pg 281.
+    """
+
+    # Find the size of the sample
+    chain_len, nchains, nvar = sequences.shape #(steps, nwalkers, ndim) - this follows refnx fitter.chain shape.
+    
+    # Only use the last portion of the sample
+    chain_len_index = int(chain_len*portion) #portion splits the chain in the middle. 
+    #we want to compare first half to latter half.
+    
+    sequences_last = sequences[-chain_len_index:] #last section of chain
+    sequences_first = sequences[:chain_len_index] #first section of chain
+    #if odd number of total samples, then we miss out the middle sample...
+    
+    tot_seq = np.concatenate((sequences_first, sequences_last), axis=1) #add these together so the number of chains 
+    #doubles and samples per split chain stays the same.
+    
+    if chain_len < 2:
+        # Set the R-statistic to a large value
+        r_stat = -2 * ones(nvar)
+    else:
+        n = tot_seq.shape[0] #n is length of each chain.
+        m = tot_seq.shape[1] #m is number of split chains.
+        
+        #first lets calc B:
+        
+        # Step 1: Determine the sequence means
+        mean_seq = np.mean(tot_seq, axis=0)
+        
+        # Step 2: Determine B. This step calculates the mean_of_means and calculates the variance. 
+        # ddof=1 applies (m - 1) to the dividing factor. Thus the scale factor at the start is n/m-1.
+        B = n*np.var(mean_seq, axis=0, ddof=1)
+        
+        #Now lets calc W:
+        
+        # Step 3: Calculate s_j^2, the variance in each chain.
+        Sj = np.var(tot_seq, axis=0, ddof=1)
+        
+        # Step 4: Calculate W.
+        W = np.mean(Sj, axis=0)
+        
+        #Now to calculate sigma2 & then Rhat.
+        
+        #Step 5: Now lets calculate sigma^2:
+        sigma2 = ((n-1)/n)*W + (1/n)*B
+        
+        Rhat = np.sqrt(sigma2/W)
+        
+        return Rhat
+        
 with open(os.path.join(os.getcwd(), 'M2_FIT_GO.pkl'),"rb") as f:
 	GO = pickle.load(f)
 
+#arviz statistics
+
 #process the chains of parameter values.
 chain_arrays = [GO.varying_parameters().flattened()[i].chain for i in range(0, len(GO.varying_parameters()))] # get the chains of each parameter.
-chain_processed = np.stack(chain_arrays, axis=2) #shape it so that its (nsteps, nwalkers, ndim) format.
-print(chain_processed.shape)
+chain_processed = np.stack(chain_arrays, axis=2) #shape it so that its (nwalkers, nsteps, ndim) format.
+chain_processed_az = np.reshape(chain_arrays, (chain_processed.shape[1], chain_processed.shape[0], chain_processed.shape[2]))
 
 #determine the rhat statistic (gelman-rubin statistic) value for each parameter (should be v close to 1)
-rhat = az.rhat(az.convert_to_dataset(chain_processed))
+rhat = az.rhat(az.convert_to_dataset(chain_processed_az))
 print(rhat.to_array())
 
 #calculate effective sample size for each parameter.
-ess = az.ess(az.convert_to_dataset(chain_processed))
+ess = az.ess(az.convert_to_dataset(chain_processed_az))
 print(ess.to_array())
+
+#refnx statistics.
+
+#now lets plot average acf of each chain for each parameter.
+plt.plot(autocorrelation_chain(chain_processed))
+plt.xlim(0, 27)
+plt.xlabel('Step')
+plt.ylabel('Normalised ACF')
+plt.show()
+
+#check rhat for each parameter. Around 1.0 is ideal.
+print(gelman_rhat(chain_processed))
+
+from refnx.analysis import integrated_time
+
+# calculate emcee autocorrelation time for each parameter.
+# describes how many more samples required for walker to forget where it was. 
+tau = integrated_time(chain_processed, quiet=True)
+print(f'Correlation takes between {np.min(tau):.1f} and {np.max(tau):.1f} steps to reduce to near 0')
+
+#estimate number of independent samples.
+#seems negative autocorrelation time
+Neff = (chain_processed.shape[0]*chain_processed.shape[1])/tau #number of samples divided by tau
+print(f'Minimum number of independent samples is esimated to be {np.min(Neff):.0f}')
 
 #create a list of parameters
 variables = []
