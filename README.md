@@ -1,5 +1,7 @@
 ## Experimental and Simulation Study of Self-Assembly and Surface Adsorption of Glycerol Monooleate in *n*-Dodecane onto Iron Oxide
 
+[![DOI](https://zenodo.org/badge/570150372.svg)](https://zenodo.org/badge/latestdoi/570150372)
+
 The scripts used to initialise the MD simulations & those for the subsequent analysis are shared in the MD directory. <br>
 The depletion isotherm data and analysis is available in the Depletion_Isotherm directory. <br>
 The scripts used to analyse the reduced data from the SANS and NR experiments are found in their respective folders. <br>
